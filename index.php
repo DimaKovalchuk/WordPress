@@ -29,6 +29,25 @@
 			<hr>
 		</div>
 		<?php endwhile; endif; ?>
+		<?php
+			$args = array( 'post_type' => 'movies', 'posts_per_page' => 10 );
+			$the_query = new WP_Query( $args );
+		?>
+		<?php if ( $the_query->have_posts() ) : ?>
+			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+				<h2><?php the_title(); ?></h2>
+				<p>Автор: 
+					<?php echo (get_post_meta($post->ID, 'Автор', true)); ?>
+				</p>
+				
+				
+				<div class="entry-content">
+					<?php the_content(); ?>
+				</div>
+				<?php wp_reset_postdata(); ?>
+			<?php endwhile; else: ?>
+			<p><?php _e( 'Записи не найдены.' ); ?></p>
+		<?php endif; ?>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">

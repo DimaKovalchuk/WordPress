@@ -4,6 +4,11 @@
 <div class="container">
 	<div class="row">
 		<?php get_sidebar(); ?> 
+		<center>
+			<?php 
+				echo do_shortcode( '[weather]' );
+			?>	
+		</center>
 		
 		
 		
@@ -33,6 +38,7 @@
 			<hr>
 		</div>
 		<?php endwhile; endif; ?>
+	
 	
 	</div>
 	<div class="row">
